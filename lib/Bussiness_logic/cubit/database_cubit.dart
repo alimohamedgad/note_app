@@ -1,9 +1,7 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'database_state.dart';
+import 'database_state.dart';
 
 class DatabaseCubit extends Cubit<DatabaseState> {
   DatabaseCubit() : super(DatabaseInitial());
-
-  
 }

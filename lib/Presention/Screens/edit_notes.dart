@@ -59,7 +59,6 @@ class _EditNotesState extends State<EditNotes> {
                 color: Colors.white,
                 hintStyleColor: Colors.white,
               ),
-              const SizedBox(height: 10),
               MultiTextField(
                 controller: bodyContoller,
                 hintText: 'Notes',

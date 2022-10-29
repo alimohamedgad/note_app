@@ -49,15 +49,18 @@ class MultiTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      maxLines: null,
-      keyboardType: TextInputType.multiline,
-      decoration: InputDecoration(
-        hintText: hintText,
-        border: InputBorder.none,
-        hintStyle: TextStyle(
-          color: hintStyleColor,
+    return Expanded(
+      child: TextField(
+        textAlign: TextAlign.end,
+        controller: controller,
+        maxLines: null,
+        keyboardType: TextInputType.multiline,
+        decoration: InputDecoration(
+          hintText: hintText,
+          border: InputBorder.none,
+          hintStyle: TextStyle(
+            color: hintStyleColor,
+          ),
         ),
       ),
     );

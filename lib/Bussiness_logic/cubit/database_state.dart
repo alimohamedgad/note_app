@@ -1,4 +1,3 @@
-part of 'database_cubit.dart';
 
 abstract class DatabaseState {}
 

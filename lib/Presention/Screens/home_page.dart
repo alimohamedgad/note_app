@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
@@ -6,7 +7,7 @@ import 'package:sqflite_project/Data/Model/db_model.dart';
 import 'package:sqflite_project/Data/Web_Services/db_helper.dart';
 import 'package:sqflite_project/Presention/Screens/add_note.dart';
 
-import 'edit_notes.dart';
+import '../Widgets/notes_item.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,8 +18,6 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-// late UserModel userList;
-
 class _HomePageState extends State<HomePage> {
   TextEditingController controller = TextEditingController();
   DataBaseHelper db = DataBaseHelper();
@@ -28,6 +27,7 @@ class _HomePageState extends State<HomePage> {
     await db.getData().then((value) {
       users = value;
       setState(() {});
+      print(users.length);
     });
     return users;
   }
@@ -65,7 +65,6 @@ class _HomePageState extends State<HomePage> {
         //     icon: const Icon(Icons.remove)),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black87,
         onPressed: () {
           Navigator.pushNamed(context, AddNote.id);
         },
@@ -73,89 +72,16 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: users.length,
-            itemBuilder: (context, i) {
-              return Dismissible(
-                key: UniqueKey(),
-                background: Container(
-                  color: Colors.red,
-                  height: 60,
-                ),
-                onDismissed: (direction) {
-                  db.deleteData(users[i].id!);
-                },
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => EditNotes(
-                          title: users[i].title,
-                          body: users[i].body,
-                          myid: users[i].id,
-                        ),
-                      ),
-                    );
-                  },
-                  child: Container(
-                      margin: const EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 10,
-                      ),
-                      decoration: BoxDecoration(
-                        color: MyColors.myYallow,
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: Colors.white,
-                          width: 1,
-                        ),
-                      ),
-                      child: Column(
-                        children: [
-                          ListTile(
-                            title: Text(
-                              users[i].title!,
-                              style: TextStyle(fontSize: 24, color: MyColors.myBlack),
-                            ),
-                            subtitle: Text(
-                              users[i].body!,
-                              style: TextStyle(fontSize: 18 , color: MyColors.myBlack),
-                            ),
-                          ),
-                        ],
-                      )),
-                ),
-              );
-            },
+          Expanded(
+            child: ListView.builder(
+              itemCount: users.length,
+              itemBuilder: (context, i) {
+                return NoteItem(db: db, users: users, index: i);
+              },
+            ),
           ),
         ],
       ),
     );
   }
 }
-
-
-
-// Card(
-//                   child: ListTile(
-//                     title: Text(users[i].body!),
-//                     trailing: IconButton(
-//                       onPressed: () {
-//                         Navigator.push(
-//                           context,
-//                           MaterialPageRoute(
-//                             builder: (context) => EditNotes(
-//                               email: users[i].body,
-//                               name: users[i].title,
-//                               myid: users[i].id,
-//                             ),
-//                           ),
-//                         );
-//                       },
-//                       icon: const Icon(Icons.edit),
-//                     ),
-//                   ),
-//                 ),

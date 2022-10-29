@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sqflite_project/Presention/Screens/add_note.dart';
-import 'package:sqflite_project/Presention/Screens/edit_notes.dart';
+import 'Presention/Screens/add_note.dart';
+import 'Presention/Screens/edit_notes.dart';
 
 import 'Constns/mycolors.dart';
 import 'Presention/Screens/home_page.dart';

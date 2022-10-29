@@ -37,7 +37,7 @@ class DataBaseHelper {
   _onCreate(Database db, int version) async {
     await db.execute('''
 CREATE TABLE $columntable (
-  $columnId INTEGER PRIMARY KEY,
+  $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
   $columnName TEXT,
   $columnEmail TEXT
 )
@@ -97,7 +97,7 @@ CREATE TABLE $columntable (
   }
 
   // To Delete All DataBase
-  mydeleteDataBase() async {
+  deleteAllDataBase() async {
     //  ده بتعمل موقع افتراضي ل الداتا بيز
     String dataBasePath = await getDatabasesPath();
     //   ده علشان اقوم بحفظ المسار للداتا

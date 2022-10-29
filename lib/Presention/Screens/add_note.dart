@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sqflite_project/Constns/mycolors.dart';
-import 'package:sqflite_project/Data/Model/db_model.dart';
-import 'package:sqflite_project/Presention/Screens/home_page.dart';
+import '../../Constns/mycolors.dart';
+import '../../Data/Model/db_model.dart';
+import 'home_page.dart';
 
 import '../../Data/Web_Services/db_helper.dart';
 import '../Widgets/custom_text_filed.dart';
@@ -53,14 +53,11 @@ class _AddNoteState extends State<AddNote> {
                 hintText: 'Title Note',
                 color: Colors.white,
               ),
-              const SizedBox(height: 5),
-              Expanded(
-                child: MultiTextField(
-                  controller: bodyController,
-                  hintText: 'Your Note',
-                color: Colors.white,
+              MultiTextField(
+                controller: bodyController,
+                hintText: 'Your Note',
+              color: Colors.white,
 
-                ),
               ),
               // MaterialButton(
               //   onPressed: () async {
