@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sqflite_project/Presention/Screens/add_note.dart';
 import 'package:sqflite_project/Presention/Screens/edit_notes.dart';
 
+import 'Constns/mycolors.dart';
 import 'Presention/Screens/home_page.dart';
 
 void main() {
@@ -14,15 +15,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: MyColors.myBlack,
+      ),
       debugShowCheckedModeBanner: false,
-      initialRoute:   HomePage.id,
+      initialRoute: HomePage.id,
       routes: {
-        AddNote.id :(context) => const AddNote(),
-        HomePage.id :(context) => const HomePage(),
-        EditNotes.id :(context) => const EditNotes(),
+        AddNote.id: (context) => const AddNote(),
+        HomePage.id: (context) => const HomePage(),
+        EditNotes.id: (context) => const EditNotes(),
       },
     );
   }
 }
-
-
