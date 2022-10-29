@@ -26,7 +26,7 @@ class CustomTextField extends StatelessWidget {
         )
       ),
       style:
-          TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold, color: color),
+          TextStyle(fontSize: 28.0, color: color),
     );
   }
 }

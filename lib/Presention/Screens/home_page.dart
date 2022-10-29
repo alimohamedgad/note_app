@@ -48,7 +48,6 @@ class _HomePageState extends State<HomePage> {
         title: const Text('Notes', style: TextStyle(fontSize: 30)),
         actions: [
           Container(
-            width: 42,
             margin: const EdgeInsets.fromLTRB(0, 10, 15, 0),
             decoration: BoxDecoration(
                 color: Colors.grey[800],
@@ -102,37 +101,32 @@ class _HomePageState extends State<HomePage> {
                     );
                   },
                   child: Container(
-                    height: 60,
-                    width: double.infinity,
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 10,
-                    ),
-                    padding: const EdgeInsets.only(
-                        bottom: 0, left: 4, right: 4, top: 12),
-                    decoration: BoxDecoration(
-                      color: MyColors.myBlack,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 1,
-
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 10,
                       ),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            users[i].title.toString(),
-                            style: const TextStyle(
-                                fontSize: 28, color: Colors.white),
-                          ),
+                      decoration: BoxDecoration(
+                        color: MyColors.myYallow,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 1,
                         ),
-                      ],
-                    ),
-                  ),
+                      ),
+                      child: Column(
+                        children: [
+                          ListTile(
+                            title: Text(
+                              users[i].title!,
+                              style: TextStyle(fontSize: 24, color: MyColors.myBlack),
+                            ),
+                            subtitle: Text(
+                              users[i].body!,
+                              style: TextStyle(fontSize: 18 , color: MyColors.myBlack),
+                            ),
+                          ),
+                        ],
+                      )),
                 ),
               );
             },

@@ -33,15 +33,13 @@ class _EditNotesState extends State<EditNotes> {
     super.initState();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     DataBaseHelper db = DataBaseHelper();
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(
-          color: Colors.black,
+          color: Colors.white,
           onPressed: () async {
             await editNote(db, context);
           },
@@ -58,11 +56,15 @@ class _EditNotesState extends State<EditNotes> {
               CustomTextField(
                 controller: titleContoller,
                 hintText: 'Title',
+                color: Colors.white,
+                hintStyleColor: Colors.white,
               ),
               const SizedBox(height: 10),
-              CustomTextField(
+              MultiTextField(
                 controller: bodyContoller,
                 hintText: 'Notes',
+                color: Colors.white,
+                hintStyleColor: Colors.white,
               ),
               const SizedBox(height: 10),
               // MaterialButton(
