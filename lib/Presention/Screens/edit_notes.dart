@@ -13,8 +13,15 @@ class EditNotes extends StatefulWidget {
   final String? title;
   final String? body;
   final int? myid;
+  final UserModel? users;
 
-  const EditNotes({super.key, this.title, this.body, this.myid});
+  const EditNotes({
+    Key? key,
+    this.title,
+    this.body,
+    this.myid,
+    this.users,
+  }) : super(key: key);
 
   static String id = 'EditNotes';
 
@@ -44,11 +51,21 @@ class _EditNotesState extends State<EditNotes> {
             await editNote(db, context);
           },
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                db.deleteData(widget.users!.id!).then((value) {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, HomePage.id, (route) => false);
+                });
+              },
+              icon: const Icon(Icons.delete_rounded))
+        ],
         backgroundColor: Colors.transparent,
         elevation: 0.0,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(10),
         child: Form(
           key: formkey,
           child: Column(
@@ -61,21 +78,11 @@ class _EditNotesState extends State<EditNotes> {
               ),
               MultiTextField(
                 controller: bodyContoller,
-                hintText: 'Notes',
+                hintText: 'Your Notes',
                 color: Colors.white,
                 hintStyleColor: Colors.white,
               ),
               const SizedBox(height: 10),
-              // MaterialButton(
-              //   onPressed: () async {
-              //     await editNote(db, context);
-              //   },
-              //   color: Colors.red,
-              //   child: const Text(
-              //     'Edit Note',
-              //     style: TextStyle(color: Colors.white),
-              //   ),
-              // )
             ],
           ),
         ),
@@ -83,7 +90,7 @@ class _EditNotesState extends State<EditNotes> {
     );
   }
 
-  Future<void> editNote(DataBaseHelper db, BuildContext context) async {
+  Future editNote(DataBaseHelper db, BuildContext context) async {
     await db
         .updateData(
       UserModel(

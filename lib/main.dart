@@ -22,9 +22,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: HomePage.id,
       routes: {
-        AddNote.id: (context) => const AddNote(),
+        AddNote.id: (context) =>  const AddNote(),
         HomePage.id: (context) => const HomePage(),
-        EditNotes.id: (context) => const EditNotes(),
+        EditNotes.id: (context) =>  const EditNotes(),
       },
     );
   }

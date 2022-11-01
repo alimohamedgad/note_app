@@ -1,39 +1,70 @@
 import 'package:flutter/material.dart';
 
+import '../../Constns/mycolors.dart';
 import '../../Data/Model/db_model.dart';
 
 class NotesListTile extends StatelessWidget {
   const NotesListTile({
     Key? key,
     required this.users,
-    required this.index,
   }) : super(key: key);
 
-  final List<UserModel> users;
-  final int index;
+  final UserModel users;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-        users[index].title!,
+        users.title!,
         style: const TextStyle(
-          fontSize: 20,
-          color: Colors.white,
+          fontSize: 12,
+          color: MyColors.myBlack,
         ),
       ),
       subtitle: Text(
-        users[index].body!,
-        maxLines: 2,
-        textAlign: TextAlign.start,
+        users.body!,
+        maxLines: 7,
         style: const TextStyle(
-          fontSize: 20,
-          color: Colors.white,
+          fontSize: 14,
+          color: MyColors.myBlack,
         ),
       ),
     );
   }
 }
 
+class NotesListTile2 extends StatelessWidget {
+  const NotesListTile2({
+    Key? key,
+    required this.users,
+  }) : super(key: key);
 
+  final UserModel users;
 
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Column(
+        children: [
+          Text(
+            users.title!,
+            style: const TextStyle(
+              fontSize: 12,
+              color: MyColors.myBlack,
+            ),
+          ),
+          Text(
+            users.body!,
+            textAlign: TextAlign.center,
+            maxLines: 6,
+            style: const TextStyle(
+              fontSize: 14,
+              color: MyColors.myBlack,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

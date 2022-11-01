@@ -6,7 +6,7 @@ class CustomTextField extends StatelessWidget {
     required this.controller,
     required this.hintText,
     this.color = Colors.black,
-      this.hintStyleColor = Colors.grey,
+    this.hintStyleColor = Colors.grey,
   }) : super(key: key);
 
   final TextEditingController controller;
@@ -19,14 +19,13 @@ class CustomTextField extends StatelessWidget {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
-        hintText: hintText,
-        border: InputBorder.none,
-        hintStyle: TextStyle(
-          color: hintStyleColor
-        )
+          hintText: hintText,
+          border: InputBorder.none,
+          hintStyle: TextStyle(color: hintStyleColor)),
+      style: TextStyle(
+        fontSize: 16.0,
+        color: color,
       ),
-      style:
-          TextStyle(fontSize: 28.0, color: color),
     );
   }
 }

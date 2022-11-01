@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+
 import '../../Constns/mycolors.dart';
 import '../../Data/Model/db_model.dart';
-import 'home_page.dart';
-
 import '../../Data/Web_Services/db_helper.dart';
 import '../Widgets/custom_text_filed.dart';
+import 'home_page.dart';
 
 class AddNote extends StatefulWidget {
-  const AddNote({super.key});
-
+  const AddNote({
+    Key? key,
+  }) : super(key: key);
   static String id = 'AddNote';
 
   @override
@@ -21,6 +22,7 @@ class _AddNoteState extends State<AddNote> {
     TextEditingController titleController = TextEditingController();
     TextEditingController bodyController = TextEditingController();
     GlobalKey<FormState> formkey = GlobalKey<FormState>();
+
 
     DataBaseHelper db = DataBaseHelper();
     return Scaffold(
@@ -35,15 +37,16 @@ class _AddNoteState extends State<AddNote> {
               bodyController,
               context,
             );
+           
+            
           },
           color: Colors.white,
         ),
-              backgroundColor: MyColors.myBlack,
-
+        backgroundColor: MyColors.myBlack,
         elevation: 0.0,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
         child: Form(
           key: formkey,
           child: Column(
@@ -56,20 +59,8 @@ class _AddNoteState extends State<AddNote> {
               MultiTextField(
                 controller: bodyController,
                 hintText: 'Your Note',
-              color: Colors.white,
-
+                color: Colors.white,
               ),
-              // MaterialButton(
-              //   onPressed: () async {
-              //     await addNote(
-              //         formkey, db, emailController, nameController, context);
-              //   },
-              //   color: Colors.red,
-              //   child: const Text(
-              //     'Add Note',
-              //     style: TextStyle(color: Colors.white),
-              //   ),
-              // )
             ],
           ),
         ),
